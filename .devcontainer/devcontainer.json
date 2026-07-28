@@ -1,0 +1,15 @@
+{
+  "name": "RHEL 8.10 Dual Environment",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "normal-vm",
+  "runServices": ["normal-vm", "hardened-vm"],
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
