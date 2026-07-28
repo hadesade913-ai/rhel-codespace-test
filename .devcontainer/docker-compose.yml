@@ -16,11 +16,13 @@ services:
     volumes:
       - ../:/workspace:cached
     command: sleep infinity
+    # Security Hardening Measures
     read_only: true
     cap_drop:
       - ALL
     security_opt:
       - no-new-privileges:true
+    # Required writable temporary directories for a read-only root
     tmpfs:
       - /tmp
       - /run
