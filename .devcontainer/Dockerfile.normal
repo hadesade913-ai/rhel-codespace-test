@@ -1,0 +1,5 @@
+FROM registry.access.redhat.com/ubi8/ubi:8.10
+
+RUN yum update -y && \
+    yum install -y sudo nano tar && \
+    yum clean all
