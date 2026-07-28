@@ -1,9 +1,13 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.10
 
-RUN yum update -y && \
-    yum install -y openscap-scanner scap-security-guide && \
+# Enable the CodeReady Builder repo to find the scap-security-guide package
+# Then, install security tools and create a non-root user
+RUN dnf config-manager --set-enabled codeready-builder-for-rhel-8-rhui-rpms && \
+    yum -y update && \
+    yum -y install openscap-scanner scap-security-guide && \
     yum clean all && \
     useradd -m -s /bin/bash secuser
 
+# Enforce non-root execution
 USER secuser
 WORKDIR /home/secuser
