@@ -1,0 +1,9 @@
+FROM registry.access.redhat.com/ubi8/ubi:8.10
+
+RUN yum update -y && \
+    yum install -y openscap-scanner scap-security-guide && \
+    yum clean all && \
+    useradd -m -s /bin/bash secuser
+
+USER secuser
+WORKDIR /home/secuser
